@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🛡️ Rapport d'Audit Sécurité
+# 🛡️ Security Audit Report
 
-**Hackathon Cybersécurité — Juin 2025**
+**Cybersecurity Hackathon — June 2025**
 
-*Défense en profondeur d'un réseau IT fictif*
+*Defense in depth for a fictional IT network*
 
 ![OPNsense](https://img.shields.io/badge/OPNsense-D94F00?style=for-the-badge&logoColor=white)
 ![Wazuh](https://img.shields.io/badge/Wazuh-005571?style=for-the-badge&logoColor=white)
@@ -14,31 +14,31 @@
 ![OpenVPN](https://img.shields.io/badge/OpenVPN-EA7E20?style=for-the-badge&logo=openvpn&logoColor=white)
 
 ![Typst](https://img.shields.io/badge/Typst-239DAD?style=for-the-badge&logo=typst&logoColor=white)
-![PDF](https://img.shields.io/badge/PDF-disponible-CC0000?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)
-![Status](https://img.shields.io/badge/Statut-Terminé_✓-27ae60?style=for-the-badge)
-![Vulns](https://img.shields.io/badge/Vulnérabilités_corrigées->90%25-27ae60?style=for-the-badge)
+![PDF](https://img.shields.io/badge/PDF-available-CC0000?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed_✓-27ae60?style=for-the-badge)
+![Vulns](https://img.shields.io/badge/Vulnerabilities_fixed->90%25-27ae60?style=for-the-badge)
 
 </div>
 
 ---
 
-## 📋 Présentation
+## 📋 Overview
 
-Ce dépôt contient la documentation complète du projet de cybersécurité réalisé lors d'un hackathon du **10 au 26 juin 2025**, avec présentation finale le **27 juin**.
+This repository contains the complete documentation of the cybersecurity project carried out during a hackathon from **10 to 26 June 2025**, with the final presentation on **27 June**.
 
-L'objectif : concevoir, déployer et auditer une infrastructure réseau fictive en appliquant les principes de **défense en profondeur** avec des outils open source.
+The goal: design, deploy and audit a fictional network infrastructure by applying **defense in depth** principles with open-source tools.
 
-| | Résultat |
+| | Result |
 |---|---|
-| 🏗️ Infrastructure | Déployée et fonctionnelle |
-| 🔍 Vulnérabilités | >90 % corrigées après audit |
-| 📡 Supervision | Temps réel opérationnelle (Wazuh) |
-| 🔴 Attaques simulées | 100 % détectées |
-| 🔐 VPN | Accès sécurisé validé |
+| 🏗️ Infrastructure | Deployed and working |
+| 🔍 Vulnerabilities | >90 % fixed after the audit |
+| 📡 Monitoring | Real-time monitoring operational (Wazuh) |
+| 🔴 Simulated attacks | 100 % detected |
+| 🔐 VPN | Secure access validated |
 
 ---
 
-## 🏗️ Architecture réseau
+## 🏗️ Network architecture
 
 ```
               ┌──────────────────────────────────────────┐
@@ -51,7 +51,7 @@ L'objectif : concevoir, déployer et auditer une infrastructure réseau fictive 
   ┌────────▼──────┐   ┌──────────▼──────┐   ┌──────────▼──────┐
   │🐧 Ubuntu Hard. │   │ 📊 Wazuh Manager│   │ 🐉 Kali Linux   │
   │ 192.168.10.10 │   │  192.168.10.20  │   │  192.168.10.50  │
-  │ Serveur cible │   │  IDS / SIEM     │   │  Red Team       │
+  │ Target server │   │  IDS / SIEM     │   │  Red Team       │
   │ UFW · Fail2Ban│   │  Dashboard :443 │   │  Nessus · Exegol│
   └───────────────┘   └─────────────────┘   └─────────────────┘
                                                       │
@@ -61,37 +61,37 @@ L'objectif : concevoir, déployer et auditer une infrastructure réseau fictive 
                                          └───────────────────┘
 ```
 
-### Plan d'adressage
+### Addressing plan
 
-| Hôte | Rôle | IP | Interface VMware |
+| Host | Role | IP | VMware interface |
 |------|------|----|-----------------|
 | 🔥 OPNsense | Firewall & VPN | `192.168.10.254` | VMnet1 + Bridged |
-| 🐧 Ubuntu Hardened | Serveur cible sécurisé | `192.168.10.10` | VMnet1 + NAT |
+| 🐧 Ubuntu Hardened | Hardened target server | `192.168.10.10` | VMnet1 + NAT |
 | 📊 Wazuh Manager | IDS / SIEM | `192.168.10.20` | VMnet1 + NAT |
 | 🐉 Kali Linux | Red Team + Nessus | `192.168.10.50` | VMnet1 + Bridged |
-| 🔐 Client VPN Ubuntu | Accès distant VPN | `192.168.10.60` | NAT + tunnel |
+| 🔐 Ubuntu VPN client | Remote VPN access | `192.168.10.60` | NAT + tunnel |
 
 ---
 
-## 🔧 Stack technique
+## 🔧 Tech stack
 
 <div align="center">
 
-### Défense
+### Defense
 
 ![OPNsense](https://img.shields.io/badge/OPNsense-Firewall_&_VPN-D94F00?style=flat-square&logoColor=white)
 ![Wazuh](https://img.shields.io/badge/Wazuh-SIEM_/_IDS-005571?style=flat-square&logoColor=white)
 ![Fail2Ban](https://img.shields.io/badge/Fail2Ban-Brute--Force_Protection-CC0000?style=flat-square&logoColor=white)
-![UFW](https://img.shields.io/badge/UFW-Pare--feu_Linux-E95420?style=flat-square&logo=ubuntu&logoColor=white)
-![OpenVPN](https://img.shields.io/badge/OpenVPN-Accès_distant-EA7E20?style=flat-square&logo=openvpn&logoColor=white)
+![UFW](https://img.shields.io/badge/UFW-Linux_firewall-E95420?style=flat-square&logo=ubuntu&logoColor=white)
+![OpenVPN](https://img.shields.io/badge/OpenVPN-Remote_access-EA7E20?style=flat-square&logo=openvpn&logoColor=white)
 ![Suricata](https://img.shields.io/badge/Suricata-IDS_/_IPS-FF6600?style=flat-square&logoColor=white)
 
-### Offensive / Audit
+### Offense / Audit
 
 ![Nessus](https://img.shields.io/badge/Nessus-Scanner_CVE-00C176?style=flat-square&logoColor=white)
 ![Exegol](https://img.shields.io/badge/Exegol-Red_Team-1a1a2e?style=flat-square&logoColor=white)
 ![Hydra](https://img.shields.io/badge/Hydra-Brute--Force_SSH-8B0000?style=flat-square&logoColor=white)
-![Nmap](https://img.shields.io/badge/Nmap-Scan_réseau-4479A1?style=flat-square&logoColor=white)
+![Nmap](https://img.shields.io/badge/Nmap-Network_scan-4479A1?style=flat-square&logoColor=white)
 ![Kali Linux](https://img.shields.io/badge/Kali_Linux-557C94?style=flat-square&logo=kali-linux&logoColor=white)
 
 ### Infrastructure
@@ -102,85 +102,85 @@ L'objectif : concevoir, déployer et auditer une infrastructure réseau fictive 
 
 </div>
 
-| Outil | Rôle |
+| Tool | Role |
 |-------|------|
-| **OPNsense** | Pare-feu, NAT, règles réseau, tunnel OpenVPN, IDS Suricata |
-| **Wazuh** | SIEM / IDS — collecte de logs, alertes temps réel, dashboard |
-| **Fail2Ban** | Bannissement automatique après brute-force SSH |
-| **Nessus** | Scanner de vulnérabilités (Tenable) |
-| **Exegol** | Framework Red Team basé sur Docker |
-| **OpenVPN** | Accès distance sécurisé par certificat |
-| **UFW** | Pare-feu applicatif Linux |
-| **Hydra** | Test de brute-force (simulation d'attaque) |
-| **Nmap** | Découverte réseau et détection de services |
+| **OPNsense** | Firewall, NAT, network rules, OpenVPN tunnel, Suricata IDS |
+| **Wazuh** | SIEM / IDS — log collection, real-time alerts, dashboard |
+| **Fail2Ban** | Automatic ban after SSH brute-force |
+| **Nessus** | Vulnerability scanner (Tenable) |
+| **Exegol** | Docker-based Red Team framework |
+| **OpenVPN** | Secure remote access by certificate |
+| **UFW** | Linux host firewall |
+| **Hydra** | Brute-force testing (attack simulation) |
+| **Nmap** | Network discovery and service detection |
 
 ---
 
-## 📁 Contenu du dépôt
+## 📁 Repository contents
 
 ```
 audit-sec/
-├── 📄 rapport-audit-securite.typ   # Source Typst (document principal)
-├── 📕 rapport-audit-securite.pdf   # Rapport compilé (~430 Ko)
-└── 📖 README.md                    # Ce fichier
+├── 📄 rapport-audit-securite.typ   # Typst source (main document)
+├── 📕 rapport-audit-securite.pdf   # Compiled report (~430 KB)
+└── 📖 README.md                    # This file
 ```
 
-### Compiler le rapport
+### Building the report
 
-Le rapport est rédigé en [Typst](https://typst.app/) — alternative moderne à LaTeX.
+The report is written in [Typst](https://typst.app/), a modern alternative to LaTeX. The report itself is written in French.
 
 ```bash
-# Installer Typst (Linux)
+# Install Typst (Linux)
 curl -fsSL https://typst.app/docs/install | sh
 
-# Compiler en PDF
+# Compile to PDF
 typst compile rapport-audit-securite.typ
 
-# Mode watch (rechargement automatique)
+# Watch mode (automatic reload)
 typst watch rapport-audit-securite.typ
 ```
 
 ---
 
-## 🔍 Vulnérabilités identifiées
+## 🔍 Vulnerabilities found
 
 ### 🐧 Ubuntu Hardened (`192.168.10.10`)
 
-| Sévérité | Vulnérabilité | CVE |
+| Severity | Vulnerability | CVE |
 |----------|--------------|-----|
-| ![CRITIQUE](https://img.shields.io/badge/CRITIQUE-8e0000?style=flat-square) | OpenSSH Privilege Escalation | `CVE-2023-2650` |
-| ![ÉLEVÉ](https://img.shields.io/badge/ÉLEVÉ-c0392b?style=flat-square) | OpenSSL Multiple Vulnerabilities | `CVE-2023-0464` |
-| ![ÉLEVÉ](https://img.shields.io/badge/ÉLEVÉ-c0392b?style=flat-square) | OpenSSL Timing Side Channel | `CVE-2023-0465` |
-| ![MOYEN](https://img.shields.io/badge/MOYEN-e67e22?style=flat-square) | SSL Medium Strength Cipher Suites | `CVE-2000-1200` |
-| ![MOYEN](https://img.shields.io/badge/MOYEN-e67e22?style=flat-square) | SSL Certificate Signature Weak | `CVE-2018-0734` |
-| ![BAS](https://img.shields.io/badge/BAS-2980b9?style=flat-square) | ICMP Timestamp / TCP Timestamps | — |
+| ![CRITICAL](https://img.shields.io/badge/CRITICAL-8e0000?style=flat-square) | OpenSSH Privilege Escalation | `CVE-2023-2650` |
+| ![HIGH](https://img.shields.io/badge/HIGH-c0392b?style=flat-square) | OpenSSL Multiple Vulnerabilities | `CVE-2023-0464` |
+| ![HIGH](https://img.shields.io/badge/HIGH-c0392b?style=flat-square) | OpenSSL Timing Side Channel | `CVE-2023-0465` |
+| ![MEDIUM](https://img.shields.io/badge/MEDIUM-e67e22?style=flat-square) | SSL Medium Strength Cipher Suites | `CVE-2000-1200` |
+| ![MEDIUM](https://img.shields.io/badge/MEDIUM-e67e22?style=flat-square) | SSL Certificate Signature Weak | `CVE-2018-0734` |
+| ![LOW](https://img.shields.io/badge/LOW-2980b9?style=flat-square) | ICMP Timestamp / TCP Timestamps | — |
 
 ### 📊 Wazuh Manager (`192.168.10.20`)
 
-| Sévérité | Vulnérabilité | CVE |
+| Severity | Vulnerability | CVE |
 |----------|--------------|-----|
-| ![CRITIQUE](https://img.shields.io/badge/CRITIQUE-8e0000?style=flat-square) | Apache HTTP/2 DoS — Rapid Reset Attack | `CVE-2023-44487` |
-| ![CRITIQUE](https://img.shields.io/badge/CRITIQUE-8e0000?style=flat-square) | Apache HTTP Server 2.4 < 2.4.57 | `CVE-2023-25690` |
-| ![ÉLEVÉ](https://img.shields.io/badge/ÉLEVÉ-c0392b?style=flat-square) | Apache 2.4.7 < 2.4.57 Multi-Vuln | `CVE-2023-25690` |
-| ![MOYEN](https://img.shields.io/badge/MOYEN-e67e22?style=flat-square) | TLS 1.0 / 1.1 détectés | — |
-| ![MOYEN](https://img.shields.io/badge/MOYEN-e67e22?style=flat-square) | SSL Cipher suites faibles | — |
-| ![BAS](https://img.shields.io/badge/BAS-2980b9?style=flat-square) | SSH Weak MAC / CBC Mode | — |
+| ![CRITICAL](https://img.shields.io/badge/CRITICAL-8e0000?style=flat-square) | Apache HTTP/2 DoS — Rapid Reset Attack | `CVE-2023-44487` |
+| ![CRITICAL](https://img.shields.io/badge/CRITICAL-8e0000?style=flat-square) | Apache HTTP Server 2.4 < 2.4.57 | `CVE-2023-25690` |
+| ![HIGH](https://img.shields.io/badge/HIGH-c0392b?style=flat-square) | Apache 2.4.7 < 2.4.57 Multi-Vuln | `CVE-2023-25690` |
+| ![MEDIUM](https://img.shields.io/badge/MEDIUM-e67e22?style=flat-square) | TLS 1.0 / 1.1 detected | — |
+| ![MEDIUM](https://img.shields.io/badge/MEDIUM-e67e22?style=flat-square) | Weak SSL cipher suites | — |
+| ![LOW](https://img.shields.io/badge/LOW-2980b9?style=flat-square) | SSH Weak MAC / CBC Mode | — |
 
-> **11 vulnérabilités détectées — >90 % corrigées après hardening.**
+> **11 vulnerabilities detected — >90 % fixed after hardening.**
 
 ---
 
-## 🛡️ Hardening appliqué
+## 🛡️ Hardening applied
 
 <details>
-<summary><b>🐧 Système Ubuntu Hardened</b></summary>
+<summary><b>🐧 Ubuntu Hardened system</b></summary>
 
 ```bash
-# Mises à jour automatiques
+# Automatic updates
 sudo apt install unattended-upgrades
 sudo dpkg-reconfigure --priority=low unattended-upgrades
 
-# Durcissement noyau
+# Kernel hardening
 cat << 'EOF' | sudo tee /etc/sysctl.d/99-hardening.conf
 net.ipv4.ip_forward = 0
 net.ipv4.conf.all.send_redirects = 0
@@ -195,7 +195,7 @@ sudo systemctl enable --now apparmor
 </details>
 
 <details>
-<summary><b>🔑 SSH — Configuration sécurisée</b></summary>
+<summary><b>🔑 SSH — Secure configuration</b></summary>
 
 ```text
 PermitRootLogin no
@@ -206,7 +206,7 @@ Ciphers aes256-ctr,aes192-ctr,aes128-ctr
 </details>
 
 <details>
-<summary><b>🔥 UFW — Pare-feu applicatif</b></summary>
+<summary><b>🔥 UFW — Host firewall</b></summary>
 
 ```bash
 sudo ufw default deny incoming
@@ -230,34 +230,34 @@ bantime  = 600
 
 ---
 
-## 🚨 Attaques simulées & détection
+## 🚨 Simulated attacks & detection
 
-| Attaque | Outil | Détecté par | Résultat |
+| Attack | Tool | Detected by | Result |
 |---------|-------|-------------|---------|
-| Brute-force SSH | ![Hydra](https://img.shields.io/badge/Hydra-8B0000?style=flat-square) | Wazuh + Fail2Ban | ✅ Banni après 3 tentatives |
-| Scan réseau | ![Nmap](https://img.shields.io/badge/Nmap-4479A1?style=flat-square) | Suricata (OPNsense) | ✅ Alerte générée |
-| Ping flood | ![hping3](https://img.shields.io/badge/hping3-555?style=flat-square) | Suricata | ✅ Détecté |
-| Scan vulnérabilités | ![Nessus](https://img.shields.io/badge/Nessus-00C176?style=flat-square) | — | ✅ 11 CVE rapportées |
-| Red Team | ![Exegol](https://img.shields.io/badge/Exegol-1a1a2e?style=flat-square) | Wazuh | ✅ Traces journalisées |
+| SSH brute-force | ![Hydra](https://img.shields.io/badge/Hydra-8B0000?style=flat-square) | Wazuh + Fail2Ban | ✅ Banned after 3 attempts |
+| Network scan | ![Nmap](https://img.shields.io/badge/Nmap-4479A1?style=flat-square) | Suricata (OPNsense) | ✅ Alert raised |
+| Ping flood | ![hping3](https://img.shields.io/badge/hping3-555?style=flat-square) | Suricata | ✅ Detected |
+| Vulnerability scan | ![Nessus](https://img.shields.io/badge/Nessus-00C176?style=flat-square) | — | ✅ 11 CVEs reported |
+| Red Team | ![Exegol](https://img.shields.io/badge/Exegol-1a1a2e?style=flat-square) | Wazuh | ✅ Traces logged |
 
 ---
 
-## 📅 Planning
+## 📅 Schedule
 
 ```
-Juin 2025
+June 2025
 ──────────────────────────────────────────────────────────
-10──────15  🏗️  Déploiement & réseau (VMs, IPs, connectivité)
-       16───18  🔥  Pare-feu & IDS (OPNsense, Wazuh, agents)
-           19──────24  🔴  Attaques & hardening (Nessus, Hydra, correctifs)
-              20─────────26  📝  Analyse & documentation
-                       25────27  🎤  Finalisation & présentation
+10──────15  🏗️  Deployment & network (VMs, IPs, connectivity)
+       16───18  🔥  Firewall & IDS (OPNsense, Wazuh, agents)
+           19──────24  🔴  Attacks & hardening (Nessus, Hydra, fixes)
+              20─────────26  📝  Analysis & documentation
+                       25────27  🎤  Finalization & presentation
 ──────────────────────────────────────────────────────────
 ```
 
 ---
 
-## 📚 Documentation officielle
+## 📚 Official documentation
 
 [![Wazuh](https://img.shields.io/badge/Wazuh_Docs-005571?style=flat-square&logoColor=white)](https://documentation.wazuh.com/current/installation-guide/)
 [![OPNsense](https://img.shields.io/badge/OPNsense_Docs-D94F00?style=flat-square&logoColor=white)](https://docs.opnsense.org/)
@@ -269,5 +269,5 @@ Juin 2025
 ---
 
 <div align="center">
-  <sub>Hackathon Cybersécurité · 10–27 juin 2025 · Confidentiel</sub>
+  <sub>Cybersecurity Hackathon · 10–27 June 2025 · Confidential</sub>
 </div>
